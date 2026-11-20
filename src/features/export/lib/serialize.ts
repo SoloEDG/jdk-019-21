@@ -3,6 +3,9 @@ export function serialize(shapes: Shape[], paths: string[]) {
   let content = "",
     group: string | undefined;
   shapes.forEach((s, i) => {
+    // Hidden objects are not drawn, so they must not appear in the export.
+    // Snap guides live only in the interactive overlay and are never serialized.
+    if (s.hidden) return;
     if (s.group !== group) {
       if (group) content += "</g>";
       group = s.group;

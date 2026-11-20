@@ -126,6 +126,8 @@ nav small {
   font-size: 11px;
   margin: 3px 0;
   padding: 13px 8px;
+  cursor: pointer;
+  border-radius: 6px;
 }
 .layer i {
   width: 13px;
@@ -135,6 +137,70 @@ nav small {
 .layer span {
   margin-left: auto;
   color: #aaa0b5;
+}
+.layer .glyph {
+  padding: 2px 3px;
+  margin-left: 0;
+  font-size: 11px;
+  color: #a294ae;
+  border-radius: 4px;
+}
+.layer .glyph:first-of-type {
+  margin-left: auto;
+}
+.layer .glyph[aria-pressed="true"] {
+  color: #7e56d8;
+}
+.layer.hidden {
+  opacity: 0.45;
+}
+.layer.hidden .glyph[aria-pressed="true"] {
+  opacity: 1;
+  color: #7e56d8;
+}
+.layer.locked {
+  font-style: italic;
+}
+.snap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 10px;
+  font-size: 11px;
+}
+.snap-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.snap-kinds summary {
+  cursor: pointer;
+  padding: 4px;
+  color: #a294ae;
+  list-style: none;
+}
+.snap-kinds {
+  position: relative;
+}
+.snap-kinds[open] {
+  position: absolute;
+  z-index: 5;
+  background: white;
+  border: 1px solid #e9e3ef;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px #49366018;
+  padding: 8px 12px;
+  right: 0;
+  margin-top: 6px;
+}
+.snap-kinds label {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 11px;
+  padding: 4px 0;
+  white-space: nowrap;
 }
 .chosen {
   background: #eee5fb;

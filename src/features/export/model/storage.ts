@@ -1,4 +1,4 @@
-import { beginEdit, revision } from "../../drawing";
+import { resetHistory, revision } from "../../drawing";
 import { ref } from "vue";
 import { doc } from "../../../shared/document";
 import type { Shape, Point } from "../../../shared/types";
@@ -34,10 +34,11 @@ export function restore() {
   try {
     const value = JSON.parse(localStorage.getItem("forma-document") || "null");
     if (Array.isArray(value) && value.every(valid)) {
-      beginEdit();
       doc.shapes = value;
       revision.value++;
       doc.selected = [];
+      // A restored document is a new baseline: undoing must not blank it.
+      resetHistory();
       return true;
     }
   } catch {}

@@ -13,7 +13,9 @@ export function create(p: Point) {
   };
   doc.shapes.push(s);
   doc.selected = [s.id];
-  return s;
+  // Return the reactive proxy, not the raw object: mutations made through the
+  // raw shape would bypass reactivity and never reach autosave.
+  return doc.shapes[doc.shapes.length - 1];
 }
 export function add(s: Shape, p: Point) {
   s.nodes.push({ ...p, in: { ...p }, out: { ...p } });
